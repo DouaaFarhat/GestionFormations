@@ -1,0 +1,27 @@
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nom = trim($_POST["nom"]);
+    $prenom = trim($_POST["prenom"]);
+    $email = trim($_POST["email"]);
+
+    $erreur = "";
+
+    if (empty($nom)) {
+        $erreur .= "Le nom est obligatoire.<br>";
+    }
+ 
+    if (empty($prenom)) {
+        $erreur .= "Le prénom est obligatoire.<br>";
+    }
+
+    if (empty($email)) {
+        $erreur .= "L'email est obligatoire.<br>";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreur .= "Format email invalide.<br>";
+    }
+}
+?>
